@@ -33,8 +33,16 @@ window.addEventListener('DOMContentLoaded', event => {
 
     const pageIndicator = document.querySelector('#pageIndicator');
     if (pageIndicator) {
+        const indicatorTrack = pageIndicator.querySelector('.page-indicator__track');
         const indicatorGradient = pageIndicator.querySelector('.page-indicator__gradient');
-        const indicatorDot = pageIndicator.querySelector('.page-indicator__dot');
+        const sectionColors = {
+            about: '#f6d357',
+            interests: '#eaf3ff',
+            skills: '#f2effa',
+            experience: '#fff8df',
+            portfolio: '#eaf3ff',
+            education: '#f2effa',
+        };
         const indicatorLinks = Array.from(pageIndicator.querySelectorAll('.page-indicator__link'));
         const sections = indicatorLinks
             .map(link => document.querySelector(link.getAttribute('href')))
@@ -83,7 +91,9 @@ window.addEventListener('DOMContentLoaded', event => {
             }, null);
 
             if (currentSection) {
-                setActiveSection(currentSection.section.id);
+                const sectionId = currentSection.section.id;
+                setActiveSection(sectionId);
+                indicatorTrack.style.backgroundColor = sectionColors[sectionId] || sectionColors.about;
             }
 
             const viewportCenter = window.scrollY + centerY;
@@ -107,7 +117,6 @@ window.addEventListener('DOMContentLoaded', event => {
             const upperLinkCenter = upperLinkBounds.top + upperLinkBounds.height / 2;
             const markerCenter = lowerLinkCenter + (upperLinkCenter - lowerLinkCenter) * sectionProgress;
             const markerTop = markerCenter - indicatorBounds.top;
-            indicatorDot.style.top = `${markerTop - 7}px`;
             indicatorGradient.style.top = `${markerTop - 28}px`;
         };
         const scheduleIndicatorUpdate = () => {

@@ -10913,27 +10913,17 @@ h3, .h3 {
   width: 8px;
   border-radius: 2px;
   background-color: #f6d357;
+  transition: background-color 450ms ease;
 }
 .page-indicator__gradient {
   position: absolute;
   z-index: 1;
   top: 0;
   left: 7px;
-  width: 12px;
+  width: 8px;
   height: 3.5rem;
   border-radius: 3px;
-  background: linear-gradient(to bottom, #f6d357 0%, #3584d8 28%, #652887 50%, #3584d8 72%, #f6d357 100%);
-}
-.page-indicator__dot {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 7px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: #652887;
-  transform: translate(-50%, 0);
+  background-color: #f6d357;
 }
 .page-indicator__link {
   position: relative;
